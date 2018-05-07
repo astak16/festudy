@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding: 0;}
+        a{color:inherit;text-decoration: none;}
+        ul,li{
+            list-style:none;
+        }
+        .logo{
+            width:60px;
+            height: 60px;
+            background: grey;
+            border-radius:30px;
+        }
+
+        header{
+            padding:10px;
+            position: relative;
+        }
+
+        .nav{
+            display: none;
+            background: grey;
+            margin-top: 10px;
+        }
+        .nav.active{    /*默认是display: none;，但它同时拥有激活状态，如果激活就把它显示出来*/
+            /*display: block;*/
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header > button{
+            position: absolute;
+            right: 20px;
+            top:26px;
+        }
+        .nav2{
+            display:none;
+        }
+        @media (min-width:451px) {
+            header > button{
+                 display: none;
+             }
+            .nav,.nav.active{ /*这里 .nav .active选择器比 .nav权重高，所以这两个都给它设置为none*/
+                display: none /*!important*/;
+            }
+            .nav2{
+                display: block;
+            }
+            header{
+                display: flex;
+                align-items: center;
+            }
+            header .nav2{
+                display: flex;
+                margin-left: 20px;
+            }
+            header .nav2 > li{
+                margin:0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"></div>
+        <button id="xx">菜单</button>
+        <ul id="yy" class="nav">
+            <li><a href="#">导航1</a></li>
+            <li><a href="#">导航2</a></li>
+            <li><a href="#">导航3</a></li>
+            <li><a href="#">导航4</a></li>
+            <li><a href="#">导航5</a></li>
+        </ul>
+
+        <ul class="nav2">
+            <li><a href="#">导航1</a></li>
+            <li><a href="#">导航2</a></li>
+            <li><a href="#">导航3</a></li>
+            <li><a href="#">导航4</a></li>
+            <li><a href="#">导航5</a></li>
+        </ul>
+    </header>
+    <script>
+        //这里js的作用是切换class的状态 nav/active
+        //通过js改元素的class，也就是说这个元素有两种状态，一种是隐藏状态，一种是激活状态
+        xx.onclick=function (){
+            yy.classList.toggle('active');  //如果你有active，我就给你加上
+        }
+
+
+       /*
+        //这里js的作用是改元素的style
+       //这样写代码很烂，不要改元素的style，应该是这个nav有两种状态，一种是隐藏状态一种显示状态。
+        //对应css中.nav选择器
+        xx.onclick=function () {        //当id为xx的按钮被点击
+            if(yy.style.display === 'block'){       //如果yy的style display为block
+                yy.style.display = 'none';      //将yy的style display变为none（隐藏）
+            }else{
+                yy.style.display = 'block';     //否则直接将他变为block（显示）
+            }
+        }
+        */
+    </script>
+</body>
+</html>

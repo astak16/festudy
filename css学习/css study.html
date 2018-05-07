@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .parent{
+            border: 1px solid red;
+            color:  white;
+            background: black;
+            height: 70px;
+            width: 200px;
+            position: relative;
+            z-index:0;
+        }
+        .child1{
+            border: 1px solid red;
+            color:  black;
+            background: yellow;
+            height: 50px;
+            width: 50px;
+            margin-left: 10px;
+            position: absolute;
+            z-index:3;
+        }
+
+        .child2{
+            border: 1px solid red;
+            color:  black;
+            background: green;
+            height: 50px;
+            width: 50px;
+            margin-left: 15px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="parent">
+        parent
+        <div class="child1">
+            child1
+        </div>
+        <div class="child2">
+            child2
+        </div>
+    </div>
+</body>
+</html>
