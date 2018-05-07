@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       header{
+           height:50px;
+           background: #ddd;
+       }
+        footer{
+            height: 50px;
+            background: #ddd;
+        }
+       .content{
+           display:flex;
+       }
+        .content > aside{
+            width:120px;
+            background: #444;
+        }
+       .content > main{
+           height: 400px;
+           flex:1;
+           background: red;
+       }
+       .content > nav{
+           width:100px;
+           background:green;
+       }
+    </style>
+</head>
+<body>
+<header>header</header>
+<div class="content">
+    <aside id="aside1"></aside>
+    <main></main>
+    <nav></nav>
+</div>
+<footer>footer</footer>
+</body>
+</html>
