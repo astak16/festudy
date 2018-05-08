@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .parent{
+            background: #A9A9A9;
+            min-width: 600px;
+            width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .zuzong{
+
+            width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .child:nth-child(1){
+            background:	#00FFFF;
+            float: left;
+        }
+
+        .child:nth-child(2){
+            float: right;
+        }
+        .logo{
+            text-align: center; /*文字水平居中*/
+            width: 60px;
+            height:30px;
+            line-height: 30px;  /*单行文本居中，行高和高相等*/
+            margin:5px;
+        }
+        .clearfix::after{
+            content: '';
+            display: block;
+            clear:both;
+        }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        ul{
+            list-style: none;
+        }
+        ul > li{
+            float:left;
+            margin:0 0 0 10px ;
+            line-height: 24px;
+            padding-top: 8px;
+            padding-bottom:8px;
+        }
+
+        .banner{
+            background: #DCDCDC;
+            height: 300px;
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+        }
+        .pictures{      /*定位用的，居中*/
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .pictures > .xxx {
+            margin: 0 -4px; /*负margin 加在父元素身上，margin为负表示向外拉伸。其外面有一个定位用的子元素*/
+            display: flex;
+            flex-wrap: wrap;
+            background: red;
+        }
+        .picture{
+            width:calc(25% - 8px);/*calc在父元素的宽度上乘上25%，在减去8px，得到最终的宽度*/
+            height: 194px;
+            background: #DEB887;
+            margin: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="zuzong">
+    <div class="parent clearfix">
+        <div class="child">
+            <div class="logo">LOGO</div>
+        </div>
+        <div class="child">
+            <ul class="clearfix">
+                <li>导航1</li>
+                <li>导航2</li>
+                <li>导航3</li>
+                <li>导航4</li>
+                <li>导航5</li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner"></div>
+    <div class="pictures">
+        <div class="xxx">
+            <div class="picture"></div>
+            <div class="picture"></div>
+            <div class="picture"></div>
+            <div class="picture"></div>
+            <div class="picture"></div>
+            <div class="picture"></div>
+            <div class="picture"></div>
+        </div>
+    </div>
+    </div>
+    <div class="art">
+        <div class="sider"></div>
+        <div class="main"></div>
+    </div>
+</body>
+</html>

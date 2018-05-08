@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .parent{
+            background: #A9A9A9;
+            min-width: 600px;
+        }
+
+        .child:nth-child(1){
+            background:	#00FFFF;
+            text-align: center; /*文字水平居中*/
+            width: 60px;
+            height:30px;
+            line-height: 30px;  /*单行文本居中，行高和高相等*/
+            margin:5px;
+            float: left;
+        }
+
+        .child:nth-child(2){
+            float: right;
+        }
+        .clearfix::after{
+            content: '';
+            display: block;
+            clear:both;
+        }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        ul{
+            list-style: none;
+        }
+        ul > li{
+            float:left;
+            margin:0 0 0 10px ;
+            line-height: 24px;
+            padding-top: 8px;
+            padding-bottom:8px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="parent clearfix">
+        <div class="child">
+           LOGO
+        </div>
+        <div class="child">
+            <ul class="clearfix">
+                <li>导航1</li>
+                <li>导航2</li>
+                <li>导航3</li>
+                <li>导航4</li>
+                <li>导航5</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
