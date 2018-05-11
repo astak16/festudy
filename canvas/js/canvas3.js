@@ -27,8 +27,6 @@ red.onclick = function () {
     green.classList.remove('color');
     blue.classList.remove('color');
     black.classList.remove('color');
-    pen.classList.add('action');
-    eraser.classList.remove('action');
 };
 green.onclick = function () {
     ctx.fillStyle = "green";
@@ -37,8 +35,6 @@ green.onclick = function () {
     red.classList.remove('color');
     blue.classList.remove('color');
     black.classList.remove('color');
-    pen.classList.add('action');
-    eraser.classList.remove('action');
 };
 blue.onclick = function () {
     ctx.fillStyle = "blue";
@@ -47,8 +43,6 @@ blue.onclick = function () {
     red.classList.remove('color');
     green.classList.remove('color');
     black.classList.remove('color');
-    pen.classList.add('action');
-    eraser.classList.remove('action');
 };
 black.onclick = function () {
     ctx.fillStyle = "black";
@@ -57,8 +51,6 @@ black.onclick = function () {
     red.classList.remove('color');
     blue.classList.remove('color');
     green.classList.remove('color');
-    pen.classList.add('action');
-    eraser.classList.remove('action');
 };
 clear.onclick = function () {
     ctx.clearRect(0,0,yyy.width,yyy.height);
@@ -71,9 +63,6 @@ download.onclick = function () {
     a.download = "我的画";
     a.target = "_blank";
     a.click();
-};
-canvas.onclick = function () {
-    canvas.classList.add('colorr');
 };
 
 //设置画板
