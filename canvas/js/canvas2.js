@@ -44,6 +44,7 @@ function listenToMouse(canvas) {
 
     //鼠标按下
     canvas.onmousedown = function (aaa) {
+        console.log(aaa);
         var x = aaa.clientX;
         var y = aaa.clientY;
         painting = true;

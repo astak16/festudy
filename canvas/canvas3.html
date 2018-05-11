@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <style>
+        ul,ol{list-style:none;}
+        *{margin: 0;padding: 0;}
+        body{overflow: hidden;}
+        .icon {
+            width: 1em; height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+        .canvas{
+            background: white;
+        }
+        #actions{
+            position: fixed;
+            top: 0;
+            left:5px;
+        }
+        #actions  svg{
+            width: 1.5em;
+            height: 2em;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+       #actions .action{
+            fill:red;
+            transform: scale(1.2);
+       }
+       .colors{
+           position: fixed;
+           top:41px;
+           left:12px;
+       }
+       .color{
+           transform: scale(1.2);
+       }
+        .colors > li{
+            width:20px;
+            height:20px;
+            margin:10px 0;
+            border-radius: 50%;
+        }
+        .colors > li.black{
+            background: black;
+        }
+        .colors > li.red{
+            background: red;
+        }
+        .colors > li.green{
+            background: green;
+        }
+        .colors > li.blue{
+            background: blue;
+        }
+
+    </style>
+
+</head>
+<body>
+        <canvas id="xxx" class="canvas"></canvas>
+        <div id="actions">
+            <svg id="pen" class="icon action" aria-hidden="true">
+                <use xlink:href="#icon-pen"></use>
+            </svg>
+            <svg id="eraser" class="icon" aria-hidden="true">
+                <use xlink:href="#icon-eraser"></use>
+            </svg>
+            <svg id="clear" class="icon" aria-hidden="true">
+                <use xlink:href="#icon-custom-clear"></use>
+            </svg>
+            <svg id="download" class="icon" aria-hidden="true">
+                <use xlink:href="#icon-download1"></use>
+            </svg>
+            <!--<button id="eraser">橡皮擦</button>-->
+            <!--<button id="brush">画笔</button>-->
+        </div>
+        <ol class="colors">
+            <li id="black" class="black color"></li>
+            <li id="red" class="red"></li>
+            <li id="green" class="green"></li>
+            <li id="blue" class="blue"></li>
+        </ol>
+        <!--<div id="canvas"></div>-->
+        <script src="//at.alicdn.com/t/font_663139_nbdaue5y67gmn29.js"></script>
+        <script src="js/canvas3.js"></script>
+
+</body>
+</html>
