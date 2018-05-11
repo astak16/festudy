@@ -13,11 +13,32 @@
         canvas{
             background: yellow;
         }
+        #actions{
+            position: fixed;
+            bottom: 16px;
+            left:12px;
+        }
+        #actions > #brush{
+            display: none;
+        }
+
+        #actions.x > #brush{
+            display: inline-block;
+        }
+
+        #actions.x > #eraser{
+            display: none;
+        }
+
     </style>
 
 </head>
 <body>
     <canvas id="xxx"></canvas>
+    <div id="actions">
+        <button id="eraser">橡皮擦</button>
+        <button id="brush">画笔</button>
+    </div>
     <!--<div id="canvas"></div>-->
     <script src="js/canvas2.js"></script>
 </body>
