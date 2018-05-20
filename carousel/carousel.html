@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <style>
+        .images{
+            display: flex;  /*让图片浮动起来*/
+            align-items:flex-start; /*图片浮动起来后，会变形*/
+            transition: transform 0.5s;     /*图片切换加上过渡*/
+        }
+        .window{
+            width:279px;    /*设置为图片的宽度*/
+            overflow: hidden;   /*超出的部分隐藏起来*/
+        }
+        .red{
+            color:red;
+        }
+        .position-1{
+            transform:translate(0);
+        }
+        .position-2{
+            transform:translate(-279px);
+        }
+        .position-3{
+            transform:translate(-558px);
+        }
+    </style>
+</head>
+<body>
+    <div class="window">
+        <div class="images" id="images1">
+            <img src="images/dog1.jpg" width=279>
+            <img src="images/dog2.jpg" width=279 alt="">
+            <img src="images/dog3.jpg" width=279 alt="">
+            <img src="images/dog1.jpg" width=279>
+            <img src="images/dog2.jpg" width=279 alt="">
+            <img src="images/dog3.jpg" width=279 alt="">
+        </div>
+    </div>
+    <div id='buttons'>
+        <button id='p1'>第1张</button>
+        <button id='p2'>第2张</button>
+        <button id='p3'>第3张</button>
+        <button id='p4'>第4张</button>
+        <button id='p5'>第5张</button>
+        <button id='p6'>第6张</button>
+    </div>
+
+    <script>
+        // var allButtons = $('#buttons > button');
+        // for(var i = 0; i < allButtons.length; i++){
+        //     $(allButtons[i]).on('click',function(x){
+        //         var index = $(x.currentTarget).index();
+        //         var p = index * -279;
+        //         $('#images1').css({
+        //             transform:'translate(' + p + 'px)'
+        //         });
+        //         n = index;
+        //         allButtons.eq(n%size).addClass('red').siblings('.red').removeClass('red')
+        //     })
+        // }
+        // var n = 0;
+        // var size = allButtons.length;
+        // allButtons.eq(n%size).trigger('click').addClass('red');
+        // var timerId = setInterval(function(){
+        //     n +=1;
+        //     allButtons.eq(n%size).trigger('click').addClass('red').siblings('.red').removeClass('red')
+        // },2000);
+        //
+        // $('.window').on('mouseenter',function(){
+        //     window.clearInterval(timerId);
+        // });
+        // $('.window').on('mouseleave',function(){
+        //     timerId = setInterval(function(){
+        //         n +=1;
+        //         allButtons.eq(n%size).trigger('click').addClass('red').siblings('.red').removeClass('red')
+        //     },2000);
+        // })
+
+        var allButtons = $('#buttons > button');
+        for(var i = 0; i < allButtons.length; i++){
+            $(allButtons[i]).on('click',function(x){
+                var index = $(x.currentTarget).index();
+                var p = index * -279;
+                $('#images1').css({
+                    transform:'translate(' + p + 'px)'
+                });
+                n = index;
+                activeButton(allButtons.eq(n));
+            })
+        }
+        var n = 0;
+        var size = allButtons.length;
+        playSlide(n%size);
+        var timerId = timerId = setTimer();
+
+        $('.window').on('mouseenter',function(){
+            window.clearInterval(timerId);
+        });
+        $('.window').on('mouseleave',function(){
+            timerId = setTimer()
+        });
+
+        function setTimer(){
+            return setInterval(function(){
+                n +=1;
+                playSlide(n%size)
+            },2000);
+        }
+
+        function playSlide(index){
+            allButtons.eq(index).trigger('click')
+        }
+
+        function activeButton($button){
+            $button.addClass('red').siblings('.red').removeClass('red')
+        }
+
+    </script>
+</body>
+</html>

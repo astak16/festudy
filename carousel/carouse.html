@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <style>
+        .images{
+            display: flex;
+            transition: transform 0.5s;
+        }
+        .window{
+            width:300px;
+            overflow: hidden;
+        }
+        .red{
+            color:red;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!--1.用CSS控制图片正确显示-->
+    <!--2.手动切换-->
+    <!--3.自动切换-->
+        <!--延时调用，让图片正常播放-->
+        <!--当鼠标进入轮播窗口时，清除延时调用，-->
+        <!--当鼠标离开轮播窗口时，调用延时函数，让图片继续播放-->
+
+
+    <div class="window">
+        <div class="images" id="images">
+            <img src="https://fthmb.tqn.com/0ui_Zw01Ht9NHJkSBlqOIC1IH44=/960x0/filters:no_upscale()/yorkshire-terrier-583788122-581630e85f9b581c0b018a00.jpg" width=300 alt="图片1" height=200>
+            <img src="https://canna-pet.com/wp-content/uploads/2017/06/20-longest-living-dog-breeds_canna-pet-e1498599846169.jpg" width=300 alt="" height=200>
+            <img src="http://www.tanews.org.tw/sites/default/files/imce/user/user42591/01_0.jpg" width=300 alt="" height=200>
+            <img src="https://img.clairetila.com/uploads/20170724003041_48.jpg" width=300 alt="图片1" height=200>
+            <img src="http://a1.att.hudong.com/10/11/19300001248389130616111689605.jpg" width=300 alt="" height=200>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSjKVhwnPJaz_Q8xzCgutLS0NQdjixM9qyH4ywbrx6yAJwGg1z" width=300 alt="" height=200>
+        </div>
+    </div>
+    <div id='buttons'>
+        <button id='p1'>第1张</button>
+        <button id='p2'>第2张</button>
+        <button id='p3'>第3张</button>
+        <button id='p4'>第4张</button>
+        <button id='p5'>第5张</button>
+        <button id='p6'>第6张</button>
+    </div>
+    <script>
+        // $(p1).on('click',function(){
+        //     $(images).css({transform:'translateX(0)'})
+        // });
+        // $(p2).on('click',function(){
+        //     $(images).css({transform:'translateX(-300px)'})
+        // });
+        // $(p3).on('click',function(){
+        //     $(images).css({transform:'translateX(-600px)'})
+        // });
+        // $(p4).on('click',function(){
+        //     $(images).css({transform:'translateX(-900px)'})
+        // });
+        // $(p5).on('click',function(){
+        //     $(images).css({transform:'translateX(-1200px)'})
+        // });
+        // $(p6).on('click',function(){
+        //     $(images).css({transform:'translateX(-1500px)'})
+        // });
+
+        var allButtons = $('#buttons > button');
+        for(let i = 0; i < allButtons.length; i++){
+            $(allButtons[i]).on('click',function(x){
+                var index = $(x.currentTarget).index();
+                var p = index * -300;
+                $(images).css({
+                    transform:'translateX(' + p + 'px)'
+                });
+                n = index;
+                activeButton(allButtons.eq(n));
+            })
+        }
+
+        let n = 0;
+        let size = allButtons.length;
+        allButtons.eq(n%size).trigger('click').addClass('red');
+        var TimerId = setTimer();
+
+        $('.window').on('mouseenter',function(){
+            window.clearInterval(TimerId);
+        });
+
+        $('.window').on('mouseleave',function(){
+            TimerId = setTimer()
+        });
+
+        function setTimer(){
+            return setInterval(function(){
+                n+=1;
+                playSlide(n%size);
+            },2000);
+        }
+
+        function playSlide(index){
+            allButtons.eq(index).trigger('click');
+        }
+
+        function activeButton($button) {
+            $button.addClass('red').siblings('.red').removeClass('red');
+        }
+    </script>
+</body>
+</html>

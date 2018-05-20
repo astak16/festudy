@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <style>
+        .images{
+            display: flex;  /*让图片浮动起来*/
+            align-items:flex-start; /*图片浮动起来后，会变形*/
+            border: 1px solid red;
+            transition:transform 0.5s;
+        }
+        .window{
+            border: 1px solid green;
+            width:279px;    /*设置为图片的宽度*/
+            overflow: hidden;   /*超出的部分隐藏起来*/
+        }
+    </style>
+</head>
+<body>
+<div class="window">
+    <div class="images" id="images1">
+        <img src="images/dog1.jpg" width=279>
+        <img src="images/dog2.jpg" width=279>
+        <img src="images/dog3.jpg" width=279>
+    </div>
+</div>
+<button id='p1'>第1张</button>
+    <button id='p2'>第2张</button>
+        <button id='p3'>第3张</button>
+            <script>
+                $(p1).on('click',function(){
+                    $(images1).css({transform:'translateX(0)'})
+                });
+                $(p2).on('click',function(){
+                    $(images1).css({transform:'translateX(-279px)'})
+                });
+                $(p3).on('click',function(){
+                    $(images1).css({transform:'translateX(-558px)'})
+                })
+            </script>
+</body>
+</html>
