@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .window{
+            width: 400px;
+            height:300px;
+            overflow:hidden;
+            margin:20px auto;
+        }
+        .images{
+            position:relative;
+        }
+        .images > img{
+            width:100%;
+            transition: transform 0.5s;
+        }
+
+        .images > .png1{
+            position:absolute;
+            top:0;
+            left:0;
+        }
+
+        .images > .png2{
+            position:absolute;
+            top:0;
+            left:100%;
+        }
+
+        .images > .png3{
+            position:absolute;
+            top:0;
+            left:100%;
+
+        }
+
+        .images > img.right{
+            position:absolute;
+            top:0;
+            left:100%;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="window">
+        <div id="images" class="images">
+            <img class='png1' src="./images/1.png" alt="">
+            <img class='png2' src="./images/2.png" alt="">
+            <img class='png3' src="./images/3.png" alt="">
+            <!--<img src="./images/4.png" alt="">-->
+            <!--<img src="./images/5.png" alt="">-->
+        </div>
+    </div>
+    <script>
+        setTimeout(function(){
+            $('.images > .png1').css({transform:'translateX(-100%)'});
+            $('.images > .png2').css({transform:'translateX(-100%)'});
+            $('.images > .png1').one('transitionend',function(e){
+                $(e.currentTarget).addClass('right').css({transform:'none'})
+            })
+        },3000);
+
+        setTimeout(function(){
+            $('.images > .png2').css({transform:'translateX(-200%)'});
+            $('.images > .png3').css({transform:'translateX(-100%)'});
+            $('.images > .png2').one('transitionend',function(e) {
+                $(e.currentTarget).addClass('right').css({transform: 'none'})
+            })
+        },6000);
+        setTimeout(function(){
+            $('.images > .png3').css({transform:'translateX(-200%)'});
+            $('.images > .png1').css({transform:'translateX(-100%)'});
+            $('.images > .png3').one('transitionend',function(e) {
+                $(e.currentTarget).addClass('right').css({transform: 'none'})
+            })
+        },9000);
+
+        setTimeout(function(){
+            $('.images > .png1').css({transform:'translateX(-200%)'});
+            $('.images > .png2').css({transform:'translateX(-100%)'});
+            $('.images > .png1').one('transitionend',function(e) {
+                $(e.currentTarget).addClass('right').css({transform: 'none'})
+            })
+        },12000);
+
+        setTimeout(function(){
+            $('.images > .png2').css({transform:'translateX(-200%)'});
+            $('.images > .png3').css({transform:'translateX(-100%)'});
+            $('.images > .png2').one('transitionend',function(e) {
+                $(e.currentTarget).addClass('right').css({transform: 'none'})
+            })
+        },15000);
+
+        setTimeout(function(){
+            $('.images > .png3').css({transform:'translateX(-200%)'});
+            $('.images > .png1').css({transform:'translateX(-100%)'});
+            $('.images > .png3').one('transitionend',function(e) {
+                $(e.currentTarget).addClass('right').css({transform: 'none'})
+            })
+        },18000);
+    </script>
+</body>
+</html>

@@ -6,8 +6,8 @@
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <style>
         .images{
-            display: flex;
-            transition: transform 0.5s;
+            display:flex;
+            transition:transform 0.5s;
         }
         .window{
             width:300px;
@@ -16,7 +16,6 @@
         .red{
             color:red;
         }
-
     </style>
 </head>
 <body>
@@ -48,64 +47,46 @@
         <button id='p6'>第6张</button>
     </div>
     <script>
-        // $(p1).on('click',function(){
-        //     $(images).css({transform:'translateX(0)'})
-        // });
-        // $(p2).on('click',function(){
-        //     $(images).css({transform:'translateX(-300px)'})
-        // });
-        // $(p3).on('click',function(){
-        //     $(images).css({transform:'translateX(-600px)'})
-        // });
-        // $(p4).on('click',function(){
-        //     $(images).css({transform:'translateX(-900px)'})
-        // });
-        // $(p5).on('click',function(){
-        //     $(images).css({transform:'translateX(-1200px)'})
-        // });
-        // $(p6).on('click',function(){
-        //     $(images).css({transform:'translateX(-1500px)'})
-        // });
-
-        var allButtons = $('#buttons > button');
-        for(let i = 0; i < allButtons.length; i++){
-            $(allButtons[i]).on('click',function(x){
+        var n = 0;
+        var allChildren = $('#buttons > button');
+        for(var i = 0; i < allChildren.length; i++){
+            $(allChildren[i]).on('click',function(x){
                 var index = $(x.currentTarget).index();
                 var p = index * -300;
                 $(images).css({
-                    transform:'translateX(' + p + 'px)'
+                    transform:'translateX('+ p + 'px)'
                 });
                 n = index;
-                activeButton(allButtons.eq(n));
+                activeClass(allChildren.eq(n))
             })
         }
 
-        let n = 0;
-        let size = allButtons.length;
-        allButtons.eq(n%size).trigger('click').addClass('red');
-        var TimerId = setTimer();
+
+        var size = allChildren.length;
+        playSilde(n%size);
+        var timerId = setTimer();
 
         $('.window').on('mouseenter',function(){
-            window.clearInterval(TimerId);
+            clearInterval(timerId)
         });
 
         $('.window').on('mouseleave',function(){
-            TimerId = setTimer()
+            timerId = setTimer();
         });
 
         function setTimer(){
             return setInterval(function(){
                 n+=1;
-                playSlide(n%size);
-            },2000);
+                playSilde(n%size)
+            },1000);
         }
 
-        function playSlide(index){
-            allButtons.eq(index).trigger('click');
+        function playSilde(index){
+            allChildren.eq(index).trigger('click');
         }
 
-        function activeButton($button) {
-            $button.addClass('red').siblings('.red').removeClass('red');
+        function activeClass($button){
+            $button.addClass('red').siblings('.red').removeClass('red')
         }
     </script>
 </body>

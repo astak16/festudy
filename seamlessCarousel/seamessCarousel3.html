@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        .window {
+            height: 300px;
+            width: 400px;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+        .images{
+            position:relative;
+        }
+        .images > img{
+            transition: all 0.5s;
+            position: absolute;
+            top:0;
+            width: 100%;
+        }
+        .images > img.current{
+            z-index:1;
+            transform:translateX(0);
+        }
+        .images > img.leave{
+            z-index: 1;
+            transform:translateX(-100%);
+        }
+        .images >img.enter{
+            transform:translateX(100%);
+        }
+    </style>
+
+</head>
+<body>
+<div class="window">
+    <div id="images" class="images">
+        <img class='png1' src="./images/1.png" width=400 alt="">
+        <img class='png2' src="./images/2.png" width=400 alt="">
+        <img class='png3' src="./images/3.png" width=400 alt="">
+        <img class='png4' src="./images/4.png" width=400 alt="">
+        <img class='png5' src="./images/5.png" width=400 alt="">
+    </div>
+</div>
+
+<script>
+    let n = 1;
+    int();
+
+    setInterval(function(){
+        makeLeave(getImage(n)).one('transitionend',function(e){
+            makeEnter($(e.currentTarget))
+        });
+        makeCurrent(getImage(n+1));
+
+        n++;    //这里n 是自然增长，让它一直玄幻下去
+    },1000);
+
+    //n取值应该是[1,2,3,4,5,...,size]
+    let allImages = $('#images > img');
+    let size = allImages.length;
+    function x(n){
+        if(n > size){   //如果n 大于节点size，n就取余
+            n = n%size;
+            if(n === 0){    //如果n 取余为0，则让n等于size
+                n = size;
+            }
+        }
+        return n;
+    }
+    function getImage(n){
+        return $(`#images > img:nth-child(${x(n)})`)
+    }
+
+    function makeLeave($node){
+        return $node.removeClass('current enter').addClass('leave')
+    }
+    function makeCurrent($node){
+        return $node.removeClass('enter leave').addClass('current')
+    }
+    function makeEnter($node){
+        return $node.addClass('enter').removeClass('leave current')
+    }
+
+    function int(){
+        $(`#images > img:nth-child(${n})`).addClass('current').siblings().addClass('enter');
+    }
+</script>
+</body>
+</html>
