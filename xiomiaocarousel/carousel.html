@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        .carousel{
+
+            margin: 10px auto;
+            display: table;
+            position: relative;
+            box-shadow: 0 0 3px #AAA;
+        }
+        .window{
+
+            width:1000px;
+            height:375px;
+            overflow:hidden;
+
+        }
+        .images{
+            display:flex;
+            align-items: self-start;
+            transition: all 0.3s;
+        }
+        img{
+            width:100%;
+        }
+        ul{
+            list-style-type:none;
+            display:flex;
+        }
+        li{
+            width: 10px;
+            height:10px;
+            border-radius: 50%;
+            margin:0 4px;
+            background: rgba(0,0,0,0);
+            border: 2px solid #93928F;
+        }
+
+        .absolute{
+            position: absolute;
+            bottom:5%;
+            right:4%;
+        }
+        li:nth-child(1){
+            background-color: #F5F4EE;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="carousel">
+    <div class="relative">
+        <div id="window" class="window">
+            <div id="images" class="images">
+                <img src="./images/1.jpg" alt="">
+                <img src="./images/2.jpg" alt="">
+                <img src="./images/3.jpg" alt="">
+                <img src="./images/4.jpg" alt="">
+                <img src="./images/5.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="absolute">
+        <ul id="buttons" class="buttons ">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<script>
+    var allButtons = $('ul > li');
+    for(var i = 0; i < allButtons.length; i++){
+            if(i === 1){
+                $(allButtons[i]).on('click',function(e){
+                    var index = $(e.currentTarget).index();
+                    var p = index * -1000;
+                    $(images).css({
+                        transform:'translateX('+ p + 'px)'
+                    });
+                    $(`li:nth-child(${index+1})`).css({background:'#888592'}).siblings().css({background:'rgba(0,0,0,0)'})
+                })
+            }else{
+                $(allButtons[i]).on('click',function(e){
+                    var index = $(e.currentTarget).index();
+                    var p = index * -1000;
+                    $(images).css({
+                        transform:'translateX('+ p + 'px)'
+                    });
+                    $(`li:nth-child(${index+1})`).css({background:'#F5F4EE'}).siblings().css({background:'rgba(0,0,0,0)'})
+                })
+            }
+    }
+</script>
+
+</body>
+</html>
