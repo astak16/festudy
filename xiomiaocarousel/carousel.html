@@ -20,7 +20,7 @@
             box-shadow: 0 0 3px #AAA;
         }
         .window{
-            width:1500px;
+            width:1000px;
             overflow:hidden;
         }
         .images{
@@ -58,52 +58,52 @@
         .floatingsPosition{
             position:absolute;
             top:0;
-            padding:31px 0;
+            padding:10px 0;
         }
         .floating{
-            width:310px;
-            height:50px;
+            width:210px;
+            height:35.6px;
             background:rgba(0,0,0,0.5);
-            line-height:50px;
-            font-size: 20px;
+            line-height:35.6px;
+            font-size: 18px;
             color:white;
         }
         span{
-            padding:40px;
+            padding:0 40px;
         }
         .floatingUp{
             background: rgba(0,0,0,0.5);
             position: absolute;
             top:0;
-            width:310px;
-            height:31px;
+            width:210px;
+            height:10px;
         }
         .floatingDown{
             background: rgba(0,0,0,0.5);
             position: absolute;
             bottom:0;
-            width:310px;
-            height:32px;
+            width:210px;
+            height:9.5px;
         }
         .drawers{
-            width:600px;
-            height:562.3px;
+            width:300px;
+            height:375px;
             list-style-type: none;
             position:absolute;
             display: flex;
             flex-direction:column;
             flex-wrap: wrap;
             top:0;
-            left:310px;
+            left:210px;
             box-shadow: 2px 0 3px #AAA;
         }
         .drawer{
             background:white;
-            width:300px;
+            width:200px;
             height:93.7px;
             line-height:93.7px;
             text-align: center;
-            font-size: 20px;
+            font-size: 25px;
         }
         .drawer:hover{
             color:#FF6700;
@@ -177,7 +177,7 @@
             if(i === 1){
                 $(allButtons[i]).on('click',function(e){
                     var index = $(e.currentTarget).index();
-                    var p = index * -1500;
+                    var p = index * -1000;
                     $(images).css({
                         transform:'translateX('+ p + 'px)'
                     });
@@ -186,7 +186,7 @@
             }else{
                 $(allButtons[i]).on('click',function(e){
                     var index = $(e.currentTarget).index();
-                    var p = index * -1500;
+                    var p = index * -1000;
                     $(images).css({
                         transform:'translateX('+ p + 'px)'
                     });
