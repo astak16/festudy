@@ -14,18 +14,14 @@
             box-sizing:border-box;
         }
         .carousel{
-
-            margin: 10px auto;
+            margin: 40px auto;
             display: table;
             position: relative;
             box-shadow: 0 0 3px #AAA;
         }
         .window{
-
-            width:1000px;
-            height:375px;
+            width:1500px;
             overflow:hidden;
-
         }
         .images{
             display:flex;
@@ -35,11 +31,11 @@
         img{
             width:100%;
         }
-        ul{
+        .buttons{
             list-style-type:none;
             display:flex;
         }
-        li{
+        .button{
             width: 10px;
             height:10px;
             border-radius: 50%;
@@ -53,59 +49,169 @@
             bottom:5%;
             right:4%;
         }
-        li:nth-child(1){
+        .button:nth-child(1){
             background-color: #F5F4EE;
         }
-
-
+        .floatings{
+            list-style-type:none;
+        }
+        .floatingsPosition{
+            position:absolute;
+            top:0;
+            padding:31px 0;
+        }
+        .floating{
+            width:310px;
+            height:50px;
+            background:rgba(0,0,0,0.5);
+            line-height:50px;
+            font-size: 20px;
+            color:white;
+        }
+        span{
+            padding:40px;
+        }
+        .floatingUp{
+            background: rgba(0,0,0,0.5);
+            position: absolute;
+            top:0;
+            width:310px;
+            height:31px;
+        }
+        .floatingDown{
+            background: rgba(0,0,0,0.5);
+            position: absolute;
+            bottom:0;
+            width:310px;
+            height:32px;
+        }
+        .drawers{
+            width:600px;
+            height:562.3px;
+            list-style-type: none;
+            position:absolute;
+            display: flex;
+            flex-direction:column;
+            flex-wrap: wrap;
+            top:0;
+            left:310px;
+            box-shadow: 2px 0 3px #AAA;
+        }
+        .drawer{
+            background:white;
+            width:300px;
+            height:93.7px;
+            line-height:93.7px;
+            text-align: center;
+            font-size: 20px;
+        }
+        .drawer:hover{
+            color:#FF6700;
+        }
+        .floating:hover{
+            background:#FF6700;
+        }
+        .block{
+            display: none;
+        }
     </style>
 </head>
 <body>
 <div class="carousel">
-    <div class="relative">
-        <div id="window" class="window">
-            <div id="images" class="images">
-                <img src="./images/1.jpg" alt="">
-                <img src="./images/2.jpg" alt="">
-                <img src="./images/3.jpg" alt="">
-                <img src="./images/4.jpg" alt="">
-                <img src="./images/5.jpg" alt="">
-            </div>
+    <div id="window" class="window">
+        <div id="images" class="images">
+            <img src="./images/1.jpg" alt="">
+            <img src="./images/2.jpg" alt="">
+            <img src="./images/3.jpg" alt="">
+            <img src="./images/4.jpg" alt="">
+            <img src="./images/5.jpg" alt="">
         </div>
     </div>
     <div class="absolute">
         <ul id="buttons" class="buttons ">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li class="button"></li>
+            <li class="button"></li>
+            <li class="button"></li>
+            <li class="button"></li>
+            <li class="button"></li>
+        </ul>
+    </div>
+    <div class="floatingsPosition">
+        <ul class="floatings">
+            <li class="floating"><span>手机</span></li>
+            <li class="floating"><span>电视</span></li>
+            <li class="floating"><span>笔记本</span></li>
+            <li class="floating"><span>智能家居</span></li>
+            <li class="floating"><span>健康</span></li>
+            <li class="floating"><span>出行</span></li>
+            <li class="floating"><span>路由器</span></li>
+            <li class="floating"><span>移动电源</span></li>
+            <li class="floating"><span>耳机</span></li>
+            <li class="floating"><span>生活</span></li>
+        </ul>
+    </div>
+    <div class="floatingUp"></div>
+    <div class="floatingDown"></div>
+    <div id="block" class="block">
+        <ul id="drawers" class="drawers">
+            <li class="drawer">小米电视</li>
+            <li class="drawer">小米手机</li>
+            <li class="drawer">无人机</li>
+            <li class="drawer">米兔</li>
+            <li class="drawer">笔记本</li>
+            <li class="drawer">平衡车</li>
+            <li class="drawer">路由器</li>
+            <li class="drawer">耳机</li>
+            <li class="drawer">小米手环</li>
+            <li class="drawer">空气进化器</li>
+            <li class="drawer"></li>
+            <li class="drawer"></li>
         </ul>
     </div>
 </div>
+
+
 <script>
-    var allButtons = $('ul > li');
+    var allButtons = $('#buttons > .button');
     for(var i = 0; i < allButtons.length; i++){
             if(i === 1){
                 $(allButtons[i]).on('click',function(e){
                     var index = $(e.currentTarget).index();
-                    var p = index * -1000;
+                    var p = index * -1500;
                     $(images).css({
                         transform:'translateX('+ p + 'px)'
                     });
-                    $(`li:nth-child(${index+1})`).css({background:'#888592'}).siblings().css({background:'rgba(0,0,0,0)'})
+                    $(`.button:nth-child(${index+1})`).css({background:'#888592'}).siblings().css({background:'rgba(0,0,0,0)'})
                 })
             }else{
                 $(allButtons[i]).on('click',function(e){
                     var index = $(e.currentTarget).index();
-                    var p = index * -1000;
+                    var p = index * -1500;
                     $(images).css({
                         transform:'translateX('+ p + 'px)'
                     });
-                    $(`li:nth-child(${index+1})`).css({background:'#F5F4EE'}).siblings().css({background:'rgba(0,0,0,0)'})
+                    $(`.button:nth-child(${index+1})`).css({background:'#F5F4EE'}).siblings().css({background:'rgba(0,0,0,0)'})
                 })
             }
     }
+
+    var drawerClick = 0;
+    $('.floating').on('click',function(){
+        if(drawerClick === 0){
+            $(block).show()
+            $(document).one('click',function(){
+                $(block).hide()
+            })
+            drawerClick=1
+        }else{
+            $(block).hide()
+            drawerClick=0
+        }
+    })
+
+    $('.carousel').on('click',function(e){
+        e.stopPropagation();
+    })
 </script>
 
 </body>
